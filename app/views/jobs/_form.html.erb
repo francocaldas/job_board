@@ -1,0 +1,29 @@
+<%= form_for(@job, html: {class: 'form-horizontal'}) do |f| %>
+  <% if @job.errors.any? %>
+    <div id="alert error-alert">
+      <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
+
+      <ul>
+      <% @job.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+    <div class="control-group">
+      <%= f.label :premium %><br>
+      <%= f.check_box :premium %>
+    </div>
+  <div class="control-group">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="control-group controls">
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>
