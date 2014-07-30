@@ -6,6 +6,11 @@ class JobsController < ApplicationController
   # GET /jobs.json
   def index
     @jobs = Job.most_recent.includes(:company).all
+
+    respond_to do |format|
+      format.html
+      format.json {render json: @jobs}
+    end
   end
 
   def premium
